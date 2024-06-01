@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+ddocument.addEventListener('DOMContentLoaded', (event) => {
     const navLinks = document.querySelectorAll('header nav ul li a');
     
     navLinks.forEach(link => {
