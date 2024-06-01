@@ -35,4 +35,39 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // Carousel functionality
+    const prevBtn = document.querySelector(".carousel-btn.prev");
+    const nextBtn = document.querySelector(".carousel-btn.next");
+    const projectsGrid = document.querySelector(".projects-grid");
+
+    let scrollAmount = 0;
+
+    nextBtn.addEventListener("click", () => {
+        projectsGrid.scrollBy({
+            top: 0,
+            left: 300,
+            behavior: "smooth"
+        });
+        scrollAmount += 300;
+        toggleArrows();
+    });
+
+    prevBtn.addEventListener("click", () => {
+        projectsGrid.scrollBy({
+            top: 0,
+            left: -300,
+            behavior: "smooth"
+        });
+        scrollAmount -= 300;
+        toggleArrows();
+    });
+
+    const toggleArrows = () => {
+        prevBtn.style.display = scrollAmount > 0 ? "block" : "none";
+        nextBtn.style.display = projectsGrid.scrollWidth > (projectsGrid.clientWidth + scrollAmount) ? "block" : "none";
+    };
+
+    // Initialize arrows visibility
+    toggleArrows();
 });

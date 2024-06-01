@@ -32,7 +32,7 @@ header .container {
 
 header h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 nav ul {
@@ -50,6 +50,7 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     transition: color 0.3s;
+    font-size: 1.1rem;
 }
 
 nav ul li a:hover {
@@ -57,7 +58,7 @@ nav ul li a:hover {
 }
 
 main {
-    padding-top: 80px;
+    padding-top: 100px;
 }
 
 section {
@@ -73,9 +74,8 @@ section .container {
 }
 
 .projects-grid, .certifications-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    display: flex;
+    overflow: hidden;
     margin-top: 20px;
 }
 
@@ -84,6 +84,8 @@ section .container {
     padding: 20px;
     border-radius: 8px;
     transition: transform 0.3s;
+    flex: 0 0 300px;
+    margin-right: 20px;
 }
 
 .project-card:hover, .certification-card:hover {
@@ -104,6 +106,37 @@ section .container {
 
 .project-btn:hover {
     background-color: #e55b50;
+}
+
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    transition: background-color 0.3s;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-btn.prev {
+    left: 0;
+}
+
+.carousel-btn.next {
+    right: 0;
 }
 
 section#about {
