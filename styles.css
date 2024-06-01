@@ -112,6 +112,12 @@ section .container {
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
+}
+
+.carousel .projects-grid {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
 }
 
 .carousel-btn {
@@ -125,6 +131,7 @@ section .container {
     transform: translateY(-50%);
     font-size: 2rem;
     transition: background-color 0.3s;
+    z-index: 1;
 }
 
 .carousel-btn:hover {
