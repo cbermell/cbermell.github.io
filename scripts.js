@@ -9,13 +9,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Fade-in effect for sections
-    const faders = document.querySelectorAll('section');
-    const options = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    // Modal functionality
+    const projectBtns = document.querySelectorAll(".project-btn");
+    const modals = document.querySelectorAll(".modal");
+    const closeBtns = document.querySelectorAll(".close");
 
-    const appearOnScroll = new IntersectionObserver((entries, appearOnScroll) => {
-        entries.forEach(entry => {
-           
+    projectBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const modalId = btn.getAttribute("data-modal");
+            document.getElementById(modalId).style.display = "block";
+        });
+    });
+
+    closeBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const modalId = btn.getAttribute("data-modal");
+            document.getElementById(modalId).style.display = "none";
+        });
+    });
+
+    window.addEventListener("click", (e) => {
+        modals.forEach(modal => {
+            if (e.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+});
