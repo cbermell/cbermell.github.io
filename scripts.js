@@ -1,23 +1,33 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    const body = document.body;
+document.addEventListener('DOMContentLoaded', function () {
+    // Inicializar AOS
+    AOS.init({
+        duration: 1000, // Duración de la animación en milisegundos
+        once: true, // Solo animar una vez
+    });
 
-    // Cambiar entre modo claro y oscuro al hacer clic en el botón de alternar tema
-    themeToggle.addEventListener('click', function() {
-        body.classList.toggle('dark-mode');
-        const icon = darkModeToggle.querySelector('i');
+    // Agregar evento scroll para controlar animaciones específicas
+    window.addEventListener('scroll', function () {
+        // Obtener la posición de la parte superior de la ventana
+        var scrollTop = window.scrollY;
 
-        if (body.classList.contains('dark-mode')) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-            body.style.backgroundColor = '#333';
-            body.style.color = '#fff';
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-            body.style.backgroundColor = '#f4f4f4';
-            body.style.color = '#333';
-        }
+        // Obtener la altura de la ventana del navegador
+        var windowHeight = window.innerHeight;
+
+        // Obtener todas los elementos con el atributo [data-aos]
+        var elements = document.querySelectorAll('[data-aos]');
+
+        // Iterar sobre cada elemento y activar la animación si está en la ventana visible
+        elements.forEach(function (element) {
+            // Calcular la posición del elemento en relación con la parte superior de la ventana
+            var elementOffsetTop = element.getBoundingClientRect().top + scrollTop;
+
+            // Calcular la posición de activación de la animación
+            var triggerPosition = elementOffsetTop - windowHeight + 50; // Puedes ajustar el 50 según sea necesario
+
+            // Verificar si el elemento está en la ventana visible y activar la animación
+            if (scrollTop > triggerPosition) {
+                element.classList.add('aos-animate');
+            }
+        });
     });
 });
