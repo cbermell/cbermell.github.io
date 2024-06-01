@@ -11,9 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (body.classList.contains('dark-mode')) {
             icon.classList.remove('fa-moon');
             icon.classList.add('fa-sun');
+            body.style.backgroundColor = '#333';
+            body.style.color = '#fff';
         } else {
             icon.classList.remove('fa-sun');
             icon.classList.add('fa-moon');
+            body.style.backgroundColor = '#f4f4f4';
+            body.style.color = '#333';
         }
     });
 });
